@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>buttonCount</title>
+	<style>
+		body {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			align-content: center;
+			grid-gap: 1rem;
+			padding: 1rem;
+			height: 100vh;
+			background: skyblue;
+		}
+		div {
+			font-size: 2rem;
+			text-align: center;
+			color: white;
+			background: black;
+			border-radius: 1rem;
+			padding: 2rem;
+			transition: all 0.5s ease;
+		}
+		.pressed {
+			background: tomato;
+			transform: scale(1.2);
+		}
+	</style>
+</head>
+
+<body>
+	<div id="1">1</div>
+	<div id="2">2</div>
+	<div id="3">3</div>
+	
+	<script>
+		let count1 = 0;
+		let count2 = 0;
+		let count3 = 0;
+		
+		window.addEventListener("keydown", (e) => {
+			const key = document.getElementById(e.key);
+			if (key) key.classList.add("pressed");
+		});
+		
+		window.addEventListener("keyup", (e) => {
+			const key = document.getElementById(e.key);
+			if (key) {
+				key.classList.remove("pressed");
+				if (e.key == "1") count1++;
+				else if(e.key == "2") count2++;
+				else if(e.key == "3") count3++;
+				console.log(count1, count2, count3);
+			};
+		});
+	</script>
+</body>
+</html>

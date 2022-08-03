@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js_events</title>
+</head>
+
+<body>
+	<button>클릭</button>
+	<input />
+	
+	<script>
+		// 출처: https://www.youtube.com/watch?v=3n_C8UQgYow&list=PLapoeRAdKitcBALdyuYXu1E4BxTikV-SW&index=5
+		const buttonEl = document.querySelector("button");
+		buttonEl.addEventListener("click", function (event) {
+			alert(this.textContent);
+		});
+		//buttonEl.addEventListener("click", event => alert(event.target.textContent));
+		
+		const inputEl = document.querySelector("input");
+		/*inputEl.addEventListener("change", function (event) {
+			console.log(this.value);
+		});*/
+		inputEl.addEventListener("change", event => console.log(event.target.value));
+		
+		function logEvent(event) {
+			console.log({
+				type: event.type,
+				name: event.target.name,
+				value: event.target.value,
+			})
+		}
+		inputEl.addEventListener("change", logEvent);
+		inputEl.removeEventListener("change", logEvent);
+		
+	</script>
+</body>
+</html>
